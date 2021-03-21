@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import action
 from .models import Element, Category, Type
 from .serializer import ElementSerializer, CategorySerializer, TypeSerializer
-
+ 
 class ElementViewSet(viewsets.ModelViewSet):
     queryset = Element.objects.all()
     serializer_class = ElementSerializer
@@ -12,6 +12,10 @@ class ElementViewSet(viewsets.ModelViewSet):
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+
+class TypeViewSet(viewsets.ModelViewSet):
+    queryset = Type.objects.all()
+    serializer_class = TypeSerializer
 
     @action(detail=True, methods=['get'])
     def categories(self, request, pk=None):
